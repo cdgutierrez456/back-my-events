@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from models import Event
-from schemas import EventCreate
+from app.models.event import Event
+from app.schemas.event import EventCreate
 from datetime import timezone
 
 async def create_event(db: AsyncSession, event: EventCreate) -> Event:

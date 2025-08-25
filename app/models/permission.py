@@ -1,12 +1,12 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+from app.database import Base
 
 class Permission(Base):
     __tablename__ = 'permissions'
 
-    id = Column(Integer, primary_key=True, index=True)
+    id_permission = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     route = Column(String, nullable=False)
     state_id = Column(Integer, ForeignKey('states.id_state'))

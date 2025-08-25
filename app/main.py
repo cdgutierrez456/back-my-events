@@ -1,9 +1,19 @@
 from fastapi import FastAPI
-from app.routes import user
+from app.routes import event
+from app.routes.user import router as user_router
+from app.routes.event import router as event_router
+from app.models import user, event, permission, profile, profile_permissions, state
+from .database import create_tables
 
 app = FastAPI()
 
-app.include_router(user.router, prefix='/api/users', tags=['Users'])
+app.include_router(user_router, prefix='/api/users', tags=['Users'])
+app.include_router(event_router, prefix='/api/events', tags=['Events'])
+# app.include_router(profile.router, prefix='/api/profiles', tags=['Profiles'])
+
+@app.on_event("startup")
+async def on_startup():
+    await create_tables()
 
 @app.get("/")
 def read_root():
