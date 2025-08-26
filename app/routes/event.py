@@ -6,7 +6,7 @@ from app.database import get_db
 
 router = APIRouter()
 
-@router.post("/create/", response_model=EventOut)
+@router.post("/create", response_model=EventOut)
 async def create_event(event: EventCreate, db: AsyncSession = Depends(get_db)):
     return await crud_event.create_event(db, event)
 
