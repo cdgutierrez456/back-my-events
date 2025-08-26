@@ -1,3 +1,4 @@
+from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.event import Event
 from app.schemas.event import EventCreate
@@ -15,3 +16,7 @@ async def create_event(db: AsyncSession, event: EventCreate) -> Event:
     await db.commit()
     await db.refresh(db_event)
     return db_event
+
+async def list_users(db: AsyncSession, skip: int = 0, limit: int = 100):
+    result = await db.execute(select(Event).offset(skip).limit(limit))
+    return result.scalars().all()

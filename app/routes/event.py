@@ -6,10 +6,10 @@ from app.database import get_db
 
 router = APIRouter()
 
-@router.post("/events/", response_model=EventOut)
+@router.post("/create/", response_model=EventOut)
 async def create_event(event: EventCreate, db: AsyncSession = Depends(get_db)):
     return await crud_event.create_event(db, event)
 
-@router.get("/events/", response_model=list[EventOut])
-def list_events(db: AsyncSession = Depends(get_db)):
-    return db.query(EventOut).all()
+@router.get("/", response_model=list[EventOut])
+async def list_events(skip: int = 0, limit: int = 10, db: AsyncSession = Depends(get_db)):
+    return await crud_event.list_users(db, skip, limit)
