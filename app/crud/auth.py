@@ -7,7 +7,8 @@ from app.utils.hashing import verify_password
 from app.utils.jwt import create_access_token
 
 async def authenticate_user(db: AsyncSession, user: AuthBase):
-    query = select(User).where(User.email == user.email)
+    print(user)
+    query = select(User).where(User.email == user.user)
     result = await db.execute(query)
     findUser = result.scalar_one_or_none()
 

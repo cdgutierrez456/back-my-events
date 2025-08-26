@@ -1,4 +1,5 @@
 from pydantic import BaseModel, ConfigDict
+from typing import Optional
 from datetime import datetime
 
 class EventBase(BaseModel):
@@ -6,7 +7,7 @@ class EventBase(BaseModel):
     initial_date: datetime
     end_date: datetime
     speaker_name: str
-    state_id: int
+    state_id: Optional[int] = None
 
 class EventCreate(EventBase):
     pass
