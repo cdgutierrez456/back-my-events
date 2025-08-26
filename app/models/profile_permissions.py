@@ -10,5 +10,5 @@ class ProfilePermission(Base):
     permission_id = Column(Integer, ForeignKey('permissions.id_permission'), primary_key=True)
 
     # Relaciones
-    profile = relationship("Profile", back_populates="permissions")
-    permission = relationship("Permission", back_populates="profiles")
+    profile    = relationship("Profile",    back_populates="profile_permissions")
+    permission = relationship("Permission", back_populates="profile_permissions")

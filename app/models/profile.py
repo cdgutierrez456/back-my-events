@@ -13,5 +13,5 @@ class Profile(Base):
 
     # Relaciones
     state = relationship("State", back_populates="profiles")
-    users = relationship("User", back_populates="profile")
-    permissions = relationship("ProfilePermission", back_populates="profile")
+    users = relationship("User", back_populates="profiles")
+    profile_permissions = relationship("ProfilePermission", back_populates="profile")

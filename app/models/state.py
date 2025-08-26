@@ -13,4 +13,4 @@ class State(Base):
     permissions = relationship("Permission", back_populates="state")
     profiles = relationship("Profile", back_populates="state")
     users = relationship("User", back_populates="state")
-    events = relationship("Event", back_populates="state")
+    events = relationship("Event", back_populates="state") 

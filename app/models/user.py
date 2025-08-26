@@ -14,5 +14,5 @@ class User(Base):
     state_id = Column(Integer, ForeignKey('states.id_state'))
 
     # Relaciones
-    profile = relationship("Profile", back_populates="users")
+    profiles = relationship("Profile", back_populates="users")
     state = relationship("State", back_populates="users")

@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from app.routes.user import router as user_router
 from app.routes.event import router as event_router
-# from app.models import user, event, permission, profile, profile_permissions, state
 # from .database import create_tables
+import app.models
 
 app = FastAPI()
 

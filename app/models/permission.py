@@ -13,4 +13,4 @@ class Permission(Base):
 
     # Relaciones
     state = relationship("State", back_populates="permissions")
-    profiles = relationship("ProfilePermission", back_populates="permission")
+    profile_permissions = relationship("ProfilePermission", back_populates="permission")
